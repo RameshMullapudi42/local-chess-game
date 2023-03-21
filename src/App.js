@@ -125,11 +125,11 @@ function ChessBoard() {
         </div>
         <div className={styles.gameStats}>
           <div className={styles.playerNamesSection}> 
-            <div>Player1: Rishita</div>
-            <div>Player2: Rajani</div>
+            <div>Player1: Player1</div>
+            <div>Player2: Player2</div>
           </div>
           <div className={styles.playerTurnSection}>
-            <div>Next turn: {(isPlayer1Turn) ? "Rishita" : "Rajani"}</div>
+            <div>Next turn: {(isPlayer1Turn) ? "Player1" : "Player2"}</div>
             <div>Total moves: {moveCount}</div>
           </div>
           {gameStatusHTML}
