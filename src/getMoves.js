@@ -1,4 +1,4 @@
-export function getMovesForPiece(row, col, piece, boardState, isPlayer1Turn) {
+export function getMovesForPiece(row, col, piece, boardState, isPlayer1Turn, isOnlyKillingMoves) {
 
     function pushIfValid(validMoves, piece, new_row, new_col) { // returns true if pushed and piece at new location
         let pieceAtThisMove = null;
@@ -17,7 +17,7 @@ export function getMovesForPiece(row, col, piece, boardState, isPlayer1Turn) {
     let validMoves = Array(0);
     if (piece.isPawn()) {
         let moveDirection = isPlayer1Turn ? 1 : -1;
-        pushIfValid(validMoves, piece, row + moveDirection, col);
+        
         if(row + moveDirection>=0 && row + moveDirection<=7 && col + 1>=0 && col + 1<=7){
             if(boardState[row + moveDirection][col + 1]!=null && !boardState[row + moveDirection][col + 1].isOfSameColor(piece) )
             pushIfValid(validMoves, piece, row + moveDirection, col + 1);
@@ -26,8 +26,11 @@ export function getMovesForPiece(row, col, piece, boardState, isPlayer1Turn) {
             if(boardState[row + moveDirection][col - 1]!=null && !boardState[row + moveDirection][col - 1].isOfSameColor(piece) )
             pushIfValid(validMoves, piece, row + moveDirection, col - 1);
         }
-        if (row === 1 || row === 6) {
-            pushIfValid(validMoves, piece, row + 2 * moveDirection, col);
+        if (!isOnlyKillingMoves) {
+            pushIfValid(validMoves, piece, row + moveDirection, col);
+            if (row === 1 || row === 6) {
+                pushIfValid(validMoves, piece, row + 2 * moveDirection, col);
+            }
         }
     }
     else if (piece.isKnight()) {

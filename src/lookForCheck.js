@@ -26,7 +26,7 @@ export function lookForCheck(newBoardState, isPlayer1Turn) {
             let piece = newBoardState[i][j];
             if(piece===null) continue;
             if (piece.color === lookForCheckFromColor) { //for each target colored piece
-                let validMoves = getMovesForPiece(i,j,piece,newBoardState, isPlayer1Turn); //obtain valid moves
+                let validMoves = getMovesForPiece(i,j,piece,newBoardState, isPlayer1Turn, true); //obtain valid moves
                 for(let k=0;k<validMoves.length;k++){ //within valid moves
                     if(validMoves[k][0]===king_position[0] && validMoves[k][1]===king_position[1]){ // if move matches with king's position
                         return [true, [i,j]]; //declare check

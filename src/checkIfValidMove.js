@@ -6,7 +6,7 @@ export default function isValidMove(row, col, selectedSquare, boardState, isPlay
     let old_col = selectedSquare[1];
     let oldPiece = boardState[old_row][old_col];
 
-    validMoves = getMovesForPiece(old_row, old_col, oldPiece, boardState, isPlayer1Turn);
+    validMoves = getMovesForPiece(old_row, old_col, oldPiece, boardState, isPlayer1Turn, false);
    
 
     for (let i in validMoves) {

@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './chess.module.css';
 import Square from './Square';
 import { lookForCheck } from './lookForCheck';
 import isValidMove from './checkIfValidMove';
 import initiateBoardState from './initiateBoardState';
 import checkIfCheckMate from './checkIfCheckMate'
+import * as Utils from './Utils.js';
 
 function ChessBoard() {
   function handleMove(row, col) {
-    if(gameStatus==="Checkmate") return;
+    if (gameStatus === "Checkmate") return;
     const newPiece = boardState[row][col];
     if (selectedSquare === null) { //First selection of non-empty square
       if (newPiece != null) { // allow player to select only his/her pieces
@@ -25,51 +26,52 @@ function ChessBoard() {
       let oldRow = selectedSquare[0];
       let oldCol = selectedSquare[1];
       let oldPiece = boardState[oldRow][oldCol];
-      if (newPiece!=null && oldPiece.isOfSameColor(newPiece)) { //if both of of same color, ignore old selection and take this as new selection
+      if (newPiece != null && oldPiece.isOfSameColor(newPiece)) { //if both of of same color, ignore old selection and take this as new selection
         setSelectedSquare([row, col]);
         return;
       }
-      if (isValidMove(row, col, selectedSquare, boardState, isPlayer1Turn)) { 
+      if (isValidMove(row, col, selectedSquare, boardState, isPlayer1Turn)) {
         let newBoardState = boardState.map((array) => array.slice());
         newBoardState[row][col] = oldPiece;
         newBoardState[oldRow][oldCol] = null;
-        let willBeCheckFromOpp=false;
+        let willBeCheckFromOpp = false;
         let checkFrom = [];
         [willBeCheckFromOpp, checkFrom] = lookForCheck(newBoardState, !isPlayer1Turn)
-        if(willBeCheckFromOpp) {
-          alert("Invalid move. Leads to check for opponent.");
+        if (willBeCheckFromOpp) {
+          Utils.showInvalidMove('Invalid move!');
           return;
         }
 
-        let isCheck=false;
+        let isCheck = false;
         checkFrom = [];
         [isCheck, checkFrom] = lookForCheck(newBoardState, isPlayer1Turn)
 
-        let isCheckMate=false;
+        let isCheckMate = false;
         let defenceMove = null;
-        if(isCheck) [isCheckMate,defenceMove] = checkIfCheckMate(newBoardState, isPlayer1Turn);
+        if (isCheck) [isCheckMate, defenceMove] = checkIfCheckMate(newBoardState, isPlayer1Turn);
 
         newBoardState = boardState.map((array) => array.slice());
+        if (newBoardState[row][col] !== null)
+          if (lostPieces === null) setLostPieces([newBoardState[row][col]])
+          else setLostPieces([...lostPieces, newBoardState[row][col]]);
         newBoardState[row][col] = oldPiece;
         newBoardState[oldRow][oldCol] = null;
         setSelectedSquare(null);
         setBoardState(newBoardState);
         setMoveCount(moveCount + 1);
         setIsPlayer1Turn(!isPlayer1Turn);
-        if(isCheck) 
-        {
-          if(isCheckMate) setGameStatus("Checkmate");
-          else{
+        if (isCheck) {
+          if (isCheckMate) setGameStatus("Checkmate");
+          else {
             setGameStatus("Check");
             setCheckFromSquare(checkFrom);
             setDefenceMove(defenceMove);
-          } 
-
+          }
         }
-        else setGameStatus("");        
+        else setGameStatus("");
       }
       else {
-        alert('invalid move');
+        Utils.showInvalidMove('Invalid move!');
         return;
       }
     }
@@ -80,35 +82,42 @@ function ChessBoard() {
   const [moveCount, setMoveCount] = useState(0);
   const [isPlayer1Turn, setIsPlayer1Turn] = useState(true);
   const [gameStatus, setGameStatus] = useState("");
+  const [lostPieces, setLostPieces] = useState(null);
   const [checkFromSquare, setCheckFromSquare] = useState(null);
   const [defenceMove, setDefenceMove] = useState(null);
 
+  var gameStatusHTML = "";
+  useEffect((effect) => {
+    if (gameStatus !== "") {
+      if (gameStatus === "Checkmate") {
+        Utils.playSound('checkmate.mp3');
+      }
+      if (gameStatus === "Check") {
+        Utils.playSound('check.mp3');
+      }
+    }
+  }, [gameStatus]);
 
   const rows = new Array(8).fill(null);
   const columns = new Array(8).fill(null);
 
-  var gameStatusHTML = "";
-  if(gameStatus!==""){
-    
-    
-       if(gameStatus==="Checkmate"){
-        gameStatusHTML = <div className={styles.gameStatusSection}>
-           <div> Game Status: Checkmate! Game over</div>
-           </div>
-        }
-        if(gameStatus==="Check"){
-          gameStatusHTML = <div className={styles.gameStatusSection}>
-          <div>Game Status: Check!</div>
-          </div>
-        }
-        
-   
-  }
-
   return (
     <div className={styles.chessBoardPage}>
-      <div className={styles.chessBoardHeader}>Welcome!</div>
+      <div className={styles.chessBoardHeader}>All the best!</div>
       <div className={styles.chessBoardBody}>
+        <div className={styles.player1StatsV2}>
+          <div>
+            <div className={`${styles.playerStatsHeader} ${styles.player1Avatar} ${ isPlayer1Turn && styles.nextPlayerStyle}`}>
+            </div>
+          </div>
+          <div className={styles.playerStatsBodyV2}>
+            {
+              lostPieces !== null && lostPieces.map(element => {
+                if (element.color === "white") return <span className={`${styles[element.name]} ${styles.lostPiece}`}></span>
+              })
+            }
+          </div>
+        </div>
         <div className={styles.chessBoard}>
           {rows.map((row_item, row_idx) =>
             <div className={styles.chessBoardRow} key={row_idx}>
@@ -123,22 +132,34 @@ function ChessBoard() {
             </div>
           )}
         </div>
-        <div className={styles.gameStats}>
-          <div className={styles.playerNamesSection}> 
-            <div>Player1: Player1</div>
-            <div>Player2: Player2</div>
+        <div className={styles.player2StatsV2}>
+          <div>
+            <div className={`${styles.playerStatsHeader} ${styles.player2Avatar} ${ !isPlayer1Turn && styles.nextPlayerStyle}`}>
+            </div>
           </div>
-          <div className={styles.playerTurnSection}>
-            <div>Next turn: {(isPlayer1Turn) ? "Player1" : "Player2"}</div>
-            <div>Total moves: {moveCount}</div>
+          <div className={styles.playerStatsBodyV2}>
+            {
+              lostPieces !== null && lostPieces.map(element => {
+                if (element.color === "black") return <span className={`${styles[element.name]} ${styles.lostPiece}`}></span>
+              })
+            }
           </div>
-          {gameStatusHTML}
         </div>
+        {gameStatus === "Checkmate" &&
+          <div id="gameStatusSection" className={`${styles.gameStatusSection} ${styles.checkmate}`}>
+              Checkmate! <br/>Game over
+          </div>
+        }
+        {gameStatus === "Check" &&
+          <div id="gameStatusSection" className={`${styles.gameStatusSection} ${styles["easeinout-animator"]}`}
+            onAnimationEnd={Utils.hideElement}>
+            Check!
+          </div>
+        }
+        <div id="invalidMoveDiv" className={styles.hidden} onAnimationEnd={Utils.hideElement}>Invalid move!</div>
       </div>
     </div>
   );
 }
-
-
 
 export default ChessBoard;

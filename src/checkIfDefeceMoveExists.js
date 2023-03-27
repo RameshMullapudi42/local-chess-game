@@ -9,7 +9,7 @@ export default function checkForDefenceMove(newBoardState, player){
             let piece = newBoardState[i][j];
             if(piece===null) continue;
             if (piece.color === lookForCheckFromColor) { //for each target colored piece
-                let validMoves = getMovesForPiece(i,j,piece,newBoardState, player); //obtain valid moves
+                let validMoves = getMovesForPiece(i,j,piece,newBoardState, player, true); //obtain valid moves
                 for(let k=0;k<validMoves.length;k++){ //within valid moves
                     const [row_tempMove, col_tempMove] = validMoves[k];
                     let newBoardStateTemp = newBoardState.map((array)=> array.slice());
