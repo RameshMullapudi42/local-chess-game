@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/local-chess-game/static/css/main.c8d6eb51.css",
+    "main.js": "/local-chess-game/static/js/main.51d0dddb.js",
+    "static/js/787.b0e29ad6.chunk.js": "/local-chess-game/static/js/787.b0e29ad6.chunk.js",
+    "static/media/Player1.png": "/local-chess-game/static/media/Player1.c920752422c11377083e.png",
+    "static/media/Player2.png": "/local-chess-game/static/media/Player2.33e7df0963941edbeb70.png",
+    "static/media/rook_black.svg": "/local-chess-game/static/media/rook_black.fdc575582c2cbe2ec820.svg",
+    "static/media/knight_black.svg": "/local-chess-game/static/media/knight_black.7930be9e07b51bc0e069.svg",
+    "static/media/king_black.svg": "/local-chess-game/static/media/king_black.6c8cc8fabe5215cc854d.svg",
+    "static/media/queen_black.svg": "/local-chess-game/static/media/queen_black.cf388bf415c0d33ec16f.svg",
+    "static/media/knight_white.svg": "/local-chess-game/static/media/knight_white.d47944d2cee4f8c707d1.svg",
+    "static/media/bishop_black.svg": "/local-chess-game/static/media/bishop_black.04932f63ef10dcdee115.svg",
+    "static/media/bishop_white.svg": "/local-chess-game/static/media/bishop_white.aa411d5809c6380713b4.svg",
+    "static/media/rook_white.svg": "/local-chess-game/static/media/rook_white.9e48b84f189eea24339f.svg",
+    "static/media/queen_white.svg": "/local-chess-game/static/media/queen_white.7a1aecff0f22ff68c43f.svg",
+    "static/media/pawn_black.svg": "/local-chess-game/static/media/pawn_black.be5d44ca5ee868885d21.svg",
+    "static/media/pawn_white.svg": "/local-chess-game/static/media/pawn_white.50273cc6d86861932d0a.svg",
+    "static/media/king_white.svg": "/local-chess-game/static/media/king_white.5d58f1999749c1b5ef5b.svg",
+    "index.html": "/local-chess-game/index.html",
+    "main.c8d6eb51.css.map": "/local-chess-game/static/css/main.c8d6eb51.css.map",
+    "main.51d0dddb.js.map": "/local-chess-game/static/js/main.51d0dddb.js.map",
+    "787.b0e29ad6.chunk.js.map": "/local-chess-game/static/js/787.b0e29ad6.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c8d6eb51.css",
+    "static/js/main.51d0dddb.js"
+  ]
+}
