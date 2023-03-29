@@ -86,7 +86,10 @@ function ChessBoard() {
   const [checkFromSquare, setCheckFromSquare] = useState(null);
   const [defenceMove, setDefenceMove] = useState(null);
 
-  var gameStatusHTML = "";
+  if(false){ //to suppress warning
+    console.log(checkFromSquare, defenceMove);
+  }
+
   useEffect((effect) => {
     if (gameStatus !== "") {
       if (gameStatus === "Checkmate") {
@@ -102,9 +105,14 @@ function ChessBoard() {
   const columns = new Array(8).fill(null);
 
   return (
-    <div className={styles.chessBoardPage}>
-      <div className={styles.chessBoardHeader}>All the best!</div>
-      <div className={styles.chessBoardBody}>
+    <>
+      <div className={`${styles["col-12"]} ${styles.chessBoardHeader}`}>
+        <h1>Chess</h1>
+      </div>
+      <div className={styles["col-2"]}>
+
+      </div>
+      <div className={`${styles["col-8"]} ${styles.chessBoardPage}`}>
         <div className={styles.player1StatsV2}>
           <div>
             <div className={`${styles.playerStatsHeader} ${styles.player1Avatar} ${ isPlayer1Turn && styles.nextPlayerStyle}`}>
@@ -114,10 +122,13 @@ function ChessBoard() {
             {
               lostPieces !== null && lostPieces.map(element => {
                 if (element.color === "white") return <span className={`${styles[element.name]} ${styles.lostPiece}`}></span>
+                return null;
               })
             }
           </div>
         </div>
+      
+      
         <div className={styles.chessBoard}>
           {rows.map((row_item, row_idx) =>
             <div className={styles.chessBoardRow} key={row_idx}>
@@ -132,6 +143,8 @@ function ChessBoard() {
             </div>
           )}
         </div>
+      
+      
         <div className={styles.player2StatsV2}>
           <div>
             <div className={`${styles.playerStatsHeader} ${styles.player2Avatar} ${ !isPlayer1Turn && styles.nextPlayerStyle}`}>
@@ -141,10 +154,15 @@ function ChessBoard() {
             {
               lostPieces !== null && lostPieces.map(element => {
                 if (element.color === "black") return <span className={`${styles[element.name]} ${styles.lostPiece}`}></span>
+                return null;
               })
             }
           </div>
         </div>
+        <div className={styles["col-2"]}>
+        
+        </div>
+      </div>
         {gameStatus === "Checkmate" &&
           <div id="gameStatusSection" className={`${styles.gameStatusSection} ${styles.checkmate}`}>
               Checkmate! <br/>Game over
@@ -157,8 +175,7 @@ function ChessBoard() {
           </div>
         }
         <div id="invalidMoveDiv" className={styles.hidden} onAnimationEnd={Utils.hideElement}>Invalid move!</div>
-      </div>
-    </div>
+    </>
   );
 }
 

@@ -40,20 +40,39 @@
 *{
   box-sizing: border-box;
 }
+
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+[class*="col-"]{
+  float: left;
+  padding:15px;
+}
 body{
-  background-color: rgb(200, 200, 200);
+  background-color: white;
 }
 .hidden{
   display: none;
 }
 .chessBoardPage{
+  display: flex;
   text-align:center;
   justify-content: center;
   
 }
 .chessBoardHeader{
-  font-size: xx-large;
   font-family: 'Courier New', Courier, monospace;
+  background-color: rgb(203, 145, 20);
 }
 .chessBoardBody{
   display: flex;
@@ -94,7 +113,7 @@ body{
   background-color: grey;
 }
 .selected_square{
-  background-color: #61dafb;
+  background-color: rgb(203, 145, 20);
 }
 .playerStatsSection{
   margin-bottom: 20px;
@@ -244,7 +263,7 @@ body{
 }
 
 .nextPlayerStyle{
-  border: 5px solid #61dafb;;
+  border: 5px solid rgb(203, 145, 20);
   border-radius: 50%;
 }
 .playerStatsHeader{
