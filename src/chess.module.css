@@ -37,9 +37,12 @@
   }
 }
 /* ========================== */
+
+
 *{
   box-sizing: border-box;
 }
+
 
 .col-1 {width: 8.33%;}
 .col-2 {width: 16.66%;}
@@ -58,45 +61,31 @@
   float: left;
   padding:15px;
 }
+
 body{
   background-color: white;
 }
 .hidden{
   display: none;
 }
-.chessBoardPage{
-  display: flex;
-  text-align:center;
-  justify-content: center;
-  
-}
+
 .chessBoardHeader{
   font-family: 'Courier New', Courier, monospace;
-  background-color: rgb(203, 145, 20);
+  background-color: #282c34; /*rgb(203, 145, 20);*/
+  padding: 10px 15px 10px 15px;
+  color: white;
 }
-.chessBoardBody{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  text-align:left;
-  justify-content: center;
-  padding: 0px 30px 0 30px;
+.chessBoardHeader h1{
+  margin:0px;
 }
 
-.chessBoard{
-  /* width:600px;
-  height:600px;
-  border: 2px solid black; */
-  flex-direction: column;
-  padding: 0 20px 0 20px;
-}
-.gameStats{
-  min-width: 40%;
-  font-size: x-large;
-  padding: 0 20px 0 20px;
+.chessBoardPage{
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  gap:15px;
 }
+
+
 .square{
   width: 70px;
   height:70px;
@@ -115,33 +104,58 @@ body{
 .selected_square{
   background-color: rgb(203, 145, 20);
 }
-.playerStatsSection{
-  margin-bottom: 20px;
-  background-color: rgb(240, 227, 210);
-  padding: 10px;
-  border: 1px solid grey;
-  border-radius: 10px;
-  transition: all 1s;
-  vertical-align: middle;
-}
-.player1StatsV2{
+
+.player1Stats{
   background-color: rgb(240, 227, 210);
   border: 1px solid grey;
-  padding: 10px;
-  border-radius: 10px;
+  padding: 5px;
+  border-radius: 5px;
+  width:10%;
 }
 
-.player2StatsV2{
+.player2Stats{
   background-color: rgb(240, 227, 210);
   border: 1px solid grey;
-  padding: 10px;
-  border-radius: 10px;
+  padding: 5px;
+  border-radius: 5px;
+  width:10%;
 }
-.playerStatsSection-opp-turn{
-  
-  transform: scale(0.9);
+.player1Avatar{
+  background-image: url("images/players/Player1.png");
+  background-size: 100%;
+  width:50px;
+  height:50px;
+  background-repeat: no-repeat;
+  border:2px solid black;
+  border-radius: 50%;
+}
+.player2Avatar {
+  background-image: url("images/players/Player2.png");
+  background-size: 100%;
+  width:50px;
+  height:50px;
+  background-repeat: no-repeat;
+  border:2px solid black;
+  border-radius: 50%;
+}
+.nextPlayerStyle{
+  border: 5px solid rgb(203, 145, 20);
+  border-radius: 50%;
+}
+.playerStatsHeader{
+  margin:auto;
 }
 
+.playerStatsBody{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin:auto;
+}
+.lostPiece{
+  height: 40px;
+  width: 40px;
+}
 .gameStatusSection, .moveStatus{
   position: absolute;
   top:50%;
@@ -166,21 +180,51 @@ body{
   display: block;
 }
 @keyframes easeinout {
-  /* 0%{
-    opacity:0;
-  }
-  1%,99%{
-    opacity: 1;
-  }
-  100%{
-    opacity:0;
-  } */
   0%{
     opacity:1;
   }
   100%{
     opacity:0;
   }
+}
+.moveCount{
+ float: right;
+ width: 34px;
+ height: auto;
+  background-color: white;
+  border-radius: 50%; 
+  text-align: center;
+}
+@media only screen and (max-width : 768px) {
+  [class*="col-"]{
+    float: left;
+    padding:15px;
+    width: 100%;
+  }
+  .chessBoardPage{
+    flex-direction: column;
+  }
+  .player1Stats, .player2Stats{
+    display: flex;
+    flex-direction: row;
+    width:100%;
+  }
+  .playerStatsHeader{
+    margin:0;
+  }
+  .player1Avatar, .player2Avatar {
+    width: 40px;
+    height: 40px;
+  }
+  .playerStatsBody{
+    flex-direction: row;
+    margin:0;
+  }
+  .lostPiece{
+    height: 35px;
+    width: 35px;
+  }
+
 }
 .rook_white{
   background-image: url("images/rook_white.svg");
@@ -242,66 +286,3 @@ body{
   background-repeat: no-repeat;
   background-size: contain;
 }
-.player1Avatar{
-  background-image: url("images/players/Player1.png");
-  background-size: 100%;
-  width:50px;
-  height:50px;
-  background-repeat: no-repeat;
-  border:2px solid black;
-  border-radius: 50%;
-}
-
-.player2Avatar {
-  background-image: url("images/players/Player2.png");
-  background-size: 100%;
-  width:50px;
-  height:50px;
-  background-repeat: no-repeat;
-  border:2px solid black;
-  border-radius: 50%;
-}
-
-.nextPlayerStyle{
-  border: 5px solid rgb(203, 145, 20);
-  border-radius: 50%;
-}
-.playerStatsHeader{
-  display: flex;
-  flex-direction: row;
-}
-.playerStatsHeaderItem{
-  padding-right: 20px;
-}
-
-.playerStatsBody{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-.playerStatsBodyV2{
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-}
-.lostPiece{
-  height: 40px;
-  width: 40px;
-
-}
-.playerNameinStatsHeader{
-  margin-top:auto;
-  margin-bottom: auto;
-}
-.moveCount{
- float: right;
- width: 34px;
- height: auto;
-  background-color: white;
-  border-radius: 50%; 
-  text-align: center;
-}
-/* .playerStatsSection:last-of-type{
-  margin-top: auto;
-  margin-bottom: 0px;
-} */

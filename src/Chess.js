@@ -7,7 +7,7 @@ import initiateBoardState from './initiateBoardState';
 import checkIfCheckMate from './checkIfCheckMate'
 import * as Utils from './Utils.js';
 
-function ChessBoard() {
+function Chess() {
   function handleMove(row, col) {
     if (gameStatus === "Checkmate") return;
     const newPiece = boardState[row][col];
@@ -109,16 +109,14 @@ function ChessBoard() {
       <div className={`${styles["col-12"]} ${styles.chessBoardHeader}`}>
         <h1>Chess</h1>
       </div>
-      <div className={styles["col-2"]}>
+      {/* <div className={styles["col-2"]}>
 
-      </div>
-      <div className={`${styles["col-8"]} ${styles.chessBoardPage}`}>
-        <div className={styles.player1StatsV2}>
-          <div>
+      </div> */}
+      <div className={`${styles["col-12"]} ${styles.chessBoardPage}`}>
+        <div className={styles.player1Stats}>
             <div className={`${styles.playerStatsHeader} ${styles.player1Avatar} ${ isPlayer1Turn && styles.nextPlayerStyle}`}>
             </div>
-          </div>
-          <div className={styles.playerStatsBodyV2}>
+          <div className={styles.playerStatsBody}>
             {
               lostPieces !== null && lostPieces.map(element => {
                 if (element.color === "white") return <span className={`${styles[element.name]} ${styles.lostPiece}`}></span>
@@ -129,7 +127,7 @@ function ChessBoard() {
         </div>
       
       
-        <div className={styles.chessBoard}>
+        <div>
           {rows.map((row_item, row_idx) =>
             <div className={styles.chessBoardRow} key={row_idx}>
               {columns.map((col_item, col_idx) =>
@@ -145,12 +143,11 @@ function ChessBoard() {
         </div>
       
       
-        <div className={styles.player2StatsV2}>
-          <div>
+        <div className={styles.player2Stats}>
             <div className={`${styles.playerStatsHeader} ${styles.player2Avatar} ${ !isPlayer1Turn && styles.nextPlayerStyle}`}>
             </div>
-          </div>
-          <div className={styles.playerStatsBodyV2}>
+
+          <div className={styles.playerStatsBody}>
             {
               lostPieces !== null && lostPieces.map(element => {
                 if (element.color === "black") return <span className={`${styles[element.name]} ${styles.lostPiece}`}></span>
@@ -159,10 +156,11 @@ function ChessBoard() {
             }
           </div>
         </div>
-        <div className={styles["col-2"]}>
-        
-        </div>
+       
       </div>
+      {/* <div className={styles["col-2"]}>
+        
+        </div> */}
         {gameStatus === "Checkmate" &&
           <div id="gameStatusSection" className={`${styles.gameStatusSection} ${styles.checkmate}`}>
               Checkmate! <br/>Game over
@@ -179,4 +177,4 @@ function ChessBoard() {
   );
 }
 
-export default ChessBoard;
+export default Chess;
