@@ -84,8 +84,9 @@ body{
   justify-content: center;
   gap:15px;
 }
+.chessBoard{
 
-
+}
 .square{
   width: 70px;
   height:70px;
@@ -203,6 +204,12 @@ body{
   }
   .chessBoardPage{
     flex-direction: column;
+  }
+  .chessBoard{
+    width:100%;
+  }
+  .square{
+    width:12.5%;
   }
   .player1Stats, .player2Stats{
     display: flex;

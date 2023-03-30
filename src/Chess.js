@@ -127,7 +127,7 @@ function Chess() {
         </div>
       
       
-        <div>
+        <div className={styles.chessBoard}>
           {rows.map((row_item, row_idx) =>
             <div className={styles.chessBoardRow} key={row_idx}>
               {columns.map((col_item, col_idx) =>
