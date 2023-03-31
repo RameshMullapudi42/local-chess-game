@@ -86,7 +86,7 @@ function Chess() {
   const [checkFromSquare, setCheckFromSquare] = useState(null);
   const [defenceMove, setDefenceMove] = useState(null);
 
-  if(false){ //to suppress warning
+  if (false) { //to suppress warning
     console.log(checkFromSquare, defenceMove);
   }
 
@@ -109,13 +109,10 @@ function Chess() {
       <div className={`${styles["col-12"]} ${styles.chessBoardHeader}`}>
         <h1>Chess</h1>
       </div>
-      {/* <div className={styles["col-2"]}>
-
-      </div> */}
       <div className={`${styles["col-12"]} ${styles.chessBoardPage}`}>
         <div className={styles.player1Stats}>
-            <div className={`${styles.playerStatsHeader} ${styles.player1Avatar} ${ isPlayer1Turn && styles.nextPlayerStyle}`}>
-            </div>
+          <div className={`${styles.playerStatsHeader} ${styles.player1Avatar} ${isPlayer1Turn && styles.nextPlayerStyle}`}>
+          </div>
           <div className={styles.playerStatsBody}>
             {
               lostPieces !== null && lostPieces.map(element => {
@@ -125,8 +122,6 @@ function Chess() {
             }
           </div>
         </div>
-      
-      
         <div className={styles.chessBoard}>
           {rows.map((row_item, row_idx) =>
             <div className={styles.chessBoardRow} key={row_idx}>
@@ -141,12 +136,9 @@ function Chess() {
             </div>
           )}
         </div>
-      
-      
         <div className={styles.player2Stats}>
-            <div className={`${styles.playerStatsHeader} ${styles.player2Avatar} ${ !isPlayer1Turn && styles.nextPlayerStyle}`}>
-            </div>
-
+          <div className={`${styles.playerStatsHeader} ${styles.player2Avatar} ${!isPlayer1Turn && styles.nextPlayerStyle}`}>
+          </div>
           <div className={styles.playerStatsBody}>
             {
               lostPieces !== null && lostPieces.map(element => {
@@ -156,23 +148,19 @@ function Chess() {
             }
           </div>
         </div>
-       
       </div>
-      {/* <div className={styles["col-2"]}>
-        
-        </div> */}
-        {gameStatus === "Checkmate" &&
-          <div id="gameStatusSection" className={`${styles.gameStatusSection} ${styles.checkmate}`}>
-              Checkmate! <br/>Game over
-          </div>
-        }
-        {gameStatus === "Check" &&
-          <div id="gameStatusSection" className={`${styles.gameStatusSection} ${styles["easeinout-animator"]}`}
-            onAnimationEnd={Utils.hideElement}>
-            Check!
-          </div>
-        }
-        <div id="invalidMoveDiv" className={styles.hidden} onAnimationEnd={Utils.hideElement}>Invalid move!</div>
+      {gameStatus === "Checkmate" &&
+        <div id="gameStatusSection" className={`${styles.gameStatusSection} ${styles.checkmate}`}>
+          Checkmate! <br />Game over
+        </div>
+      }
+      {gameStatus === "Check" &&
+        <div id="gameStatusSection" className={`${styles.gameStatusSection} ${styles["easeinout-animator"]}`}
+          onAnimationEnd={Utils.hideElement}>
+          Check!
+        </div>
+      }
+      <div id="invalidMoveDiv" className={styles.hidden} onAnimationEnd={Utils.hideElement}>Invalid move!</div>
     </>
   );
 }
