@@ -14,7 +14,7 @@ export function hideElement(event){
 }
 
 export function showInvalidMove(textContent){
-    playSound("./local-chess-game/invalidstep.mp3");
+    playSound("./invalidstep.mp3");
     var invalidMoveDiv = document.getElementById("invalidMoveDiv");
     invalidMoveDiv.textContent = "Invalid move!";
     invalidMoveDiv.classList.add(styles.moveStatus);
