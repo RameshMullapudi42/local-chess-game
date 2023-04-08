@@ -40,6 +40,18 @@
 *{
   box-sizing: border-box;
 }
+html, body{
+  background-color: white;
+  min-height:100%;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.fieldLabel>span{
+  padding-right: 10px;
+}
+.field{
+  margin:10px;
+}
 .col-1 {width: 8.33%;}
 .col-2 {width: 16.66%;}
 .col-3 {width: 25%;}
@@ -54,27 +66,35 @@
 .col-12 {width: 100%;}
 
 [class*="col-"]{
-  float: left;
   padding:15px;
 }
 
-body{
-  background-color: white;
-}
 .hidden{
   display: none;
 }
 
 .chessBoardHeader{
-  font-family: 'Courier New', Courier, monospace;
-  background-color: #282c34; /*rgb(203, 145, 20);*/
+  background-color: #282c34;
   padding: 10px 15px 10px 15px;
-  color: white;
+  color: whitesmoke;
+  display: flex;
 }
+
 .chessBoardHeader h1{
   margin:0px;
 }
-
+.chessBoardHeaderMenu{
+  margin: auto 0px;
+  flex-grow:1;
+  display: flex;
+  flex-direction: row-reverse;
+}
+.chessBoardHeader button{
+  color: whitesmoke;
+}
+.buttonAsLink{
+  background-color: transparent;
+}
 .chessBoardPage{
   display: flex;
   justify-content: center;
@@ -102,15 +122,7 @@ body{
   background-color: rgb(203, 145, 20);
 }
 
-.player1Stats{
-  background-color: rgb(240, 227, 210);
-  border: 1px solid grey;
-  padding: 5px;
-  border-radius: 5px;
-  width:8%;
-}
-
-.player2Stats{
+.player1Stats, .player2Stats{
   background-color: rgb(240, 227, 210);
   border: 1px solid grey;
   padding: 5px;
@@ -125,6 +137,7 @@ body{
   background-repeat: no-repeat;
   border:2px solid black;
   border-radius: 50%;
+  margin:auto;
 }
 .player2Avatar {
   background-image: url("images/players/Player2.png");
@@ -134,6 +147,7 @@ body{
   background-repeat: no-repeat;
   border:2px solid black;
   border-radius: 50%;
+  margin:auto;
 }
 .nextPlayerStyle{
   animation-name: blink-animator;
@@ -151,9 +165,11 @@ body{
   }
 }
 .playerStatsHeader{
-  margin:auto;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-
 .playerStatsBody{
   display: flex;
   flex-direction: row;
@@ -195,17 +211,38 @@ body{
     opacity:0;
   }
 }
-.moveCount{
- float: right;
- width: 34px;
- height: auto;
-  background-color: white;
-  border-radius: 50%; 
-  text-align: center;
+.modal{
+  width:100%;
+  height: 100vh;
+  position:fixed;
+  left:0px;
+  top:0px;
+  background-color:rgb(0,0,0,0.4);
 }
+.capturePlayersModal{
+  border: 2px solid #282c34;
+  border-radius: 10px;
+  width:41.66%;
+  position:absolute;
+  left:50%;
+  top:50%;
+  translate: -50% -50%;
+  text-align: center;
+  background-color: #282c34;
+  color:whitesmoke;
+}
+.capturePlayersDiv > h2{
+  margin:0px;
+}
+.capturePlayersModalButtons{
+  margin: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
 @media only screen and (max-width : 768px) {
   [class*="col-"]{
-    float: left;
     padding:15px;
     width: 100%;
   }
