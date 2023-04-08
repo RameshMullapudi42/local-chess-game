@@ -7,7 +7,6 @@ function CapturePlayers({localplayers, handlePlayersChange}, ref) {
     const localRef = useRef();
 
     function onCaptureDetailsFormSubmit(e){
-        alert('ramesh');
         e.preventDefault();
         setShowMe(false);
         handlePlayersChange(playersToCapture);
