@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/local-chess-game/static/css/main.b0fc6bd6.css",
-    "main.js": "/local-chess-game/static/js/main.b8326213.js",
+    "main.js": "/local-chess-game/static/js/main.cff433ad.js",
     "static/js/787.cddbd071.chunk.js": "/local-chess-game/static/js/787.cddbd071.chunk.js",
     "static/media/Player1.png": "/local-chess-game/static/media/Player1.c920752422c11377083e.png",
     "static/media/Player2.png": "/local-chess-game/static/media/Player2.33e7df0963941edbeb70.png",
@@ -19,11 +19,11 @@
     "static/media/king_white.svg": "/local-chess-game/static/media/king_white.5d58f1999749c1b5ef5b.svg",
     "index.html": "/local-chess-game/index.html",
     "main.b0fc6bd6.css.map": "/local-chess-game/static/css/main.b0fc6bd6.css.map",
-    "main.b8326213.js.map": "/local-chess-game/static/js/main.b8326213.js.map",
+    "main.cff433ad.js.map": "/local-chess-game/static/js/main.cff433ad.js.map",
     "787.cddbd071.chunk.js.map": "/local-chess-game/static/js/787.cddbd071.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b0fc6bd6.css",
-    "static/js/main.b8326213.js"
+    "static/js/main.cff433ad.js"
   ]
 }
