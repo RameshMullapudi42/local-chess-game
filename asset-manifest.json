@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/local-chess-game/static/css/main.6490fc64.css",
+    "main.css": "/local-chess-game/static/css/main.b582d808.css",
     "main.js": "/local-chess-game/static/js/main.e55ed53c.js",
     "static/js/787.cddbd071.chunk.js": "/local-chess-game/static/js/787.cddbd071.chunk.js",
     "static/media/Player1.png": "/local-chess-game/static/media/Player1.c920752422c11377083e.png",
@@ -18,12 +18,12 @@
     "static/media/pawn_white.svg": "/local-chess-game/static/media/pawn_white.50273cc6d86861932d0a.svg",
     "static/media/king_white.svg": "/local-chess-game/static/media/king_white.5d58f1999749c1b5ef5b.svg",
     "index.html": "/local-chess-game/index.html",
-    "main.6490fc64.css.map": "/local-chess-game/static/css/main.6490fc64.css.map",
+    "main.b582d808.css.map": "/local-chess-game/static/css/main.b582d808.css.map",
     "main.e55ed53c.js.map": "/local-chess-game/static/js/main.e55ed53c.js.map",
     "787.cddbd071.chunk.js.map": "/local-chess-game/static/js/787.cddbd071.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6490fc64.css",
+    "static/css/main.b582d808.css",
     "static/js/main.e55ed53c.js"
   ]
 }
