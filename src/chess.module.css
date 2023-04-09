@@ -127,7 +127,7 @@ html, body{
   border: 1px solid grey;
   padding: 5px;
   border-radius: 5px;
-  width:8%;
+  width:8.33%;
 }
 .player1Avatar{
   background-image: url("images/players/Player1.png");
@@ -241,7 +241,7 @@ html, body{
   justify-content: space-evenly;
 }
 
-@media only screen and (max-width : 768px) {
+@media only screen and (max-width : 1024px) {
   [class*="col-"]{
     padding:15px;
     width: 100%;
