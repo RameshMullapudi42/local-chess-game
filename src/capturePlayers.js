@@ -28,11 +28,9 @@ function CapturePlayers({localplayers, handlePlayersChange}, ref) {
         <div ref={localRef}>
         {showMe &&
         <div id='capturePlayersComponent'>
-     
             <div className={styles.modal}>
             <div className={`${styles.capturePlayersModal}`}>
             <h2>Players</h2>
-            
                 <form id="captureDetailsForm" onSubmit={onCaptureDetailsFormSubmit}>
                     <div className={styles.field}>
                         <label className={styles.fieldLabel}><span>Player 1</span>
